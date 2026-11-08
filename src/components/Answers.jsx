@@ -7,8 +7,10 @@ export default function Answers({
   selectedAnswer,
 }) {
   const shuffledAnswers = useRef();
-  shuffledAnswers.current = [...answers];
-  shuffledAnswers.current.sort(() => Math.random() - 0.5);
+  if (!shuffledAnswers.current) {
+    shuffledAnswers.current = [...answers];
+    shuffledAnswers.current.sort(() => Math.random() - 0.5);
+  }
   return (
     <ul id="answers">
       {shuffledAnswers.current.map((ans) => {
